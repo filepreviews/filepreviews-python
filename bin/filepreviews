@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+"""FilePreviews.io CLI
+
+Usage:
+  filepreviews <url> [--debug]
+  filepreviews (-h | --help)
+  filepreviews --version
+
+Options:
+  -h --help     Show this screen.
+  --version     Show version.
+
+"""
+import json
+
+from docopt import docopt
+from filepreviews import FilePreviews, VERSION
+
+
+if __name__ == '__main__':
+    version = 'FilePreviews.io CLI {}'.format(VERSION)
+    arguments = docopt(__doc__, version=version)
+
+    previews = FilePreviews(debug=arguments['--debug'])
+    results = previews.generate(arguments['<url>'])
+
+    print(json.dumps(results))

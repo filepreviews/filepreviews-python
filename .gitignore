@@ -11,7 +11,6 @@ dist/
 *.egg-info/
 MANIFEST
 
-bin/
 include/
 lib/
 local/
