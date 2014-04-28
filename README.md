@@ -1,5 +1,5 @@
 # FilePreviews.io
-Python client library and CLI tool for the **Demo API** of [FilePreviews.io](http://filepreviews.io) service. A lot more to come very soon.
+Python client library and CLI tool for the **Demo API** of [FilePreviews.io](http://filepreviews.io) service. Generate image previews and metadata from almost any kind of file. A lot more to come very soon.
 
 [Sign up to beta](http://eepurl.com/To0U1)
 
