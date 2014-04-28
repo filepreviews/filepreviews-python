@@ -9,7 +9,7 @@ import sys
 
 name = 'filepreviews'
 package = 'filepreviews'
-description = ''
+description = 'Python client library and CLI tool for the Demo API of FilePreviews.io'
 url = 'https://github.com/GetBlimp/filepreviews-python'
 author = 'Jose Padilla'
 author_email = 'jpadilla@getblimp.com'
@@ -18,7 +18,6 @@ install_requires = open('requirements.txt').read().split('\n')
 test_suite = ''
 scripts = ['bin/filepreviews']
 classifiers = [
-    "Development Status :: 3 - Alpha",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python",
     "Programming Language :: Python :: 2.6",
