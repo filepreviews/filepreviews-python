@@ -66,10 +66,3 @@ $ filepreviews http://www.getblimp.com/images/screenshot1.png
     }
 }
 ```
-
-## Build
-```
-git clone https://github.com/GetBlimp/filepreviews.js.git
-cd filepreviews.js
-npm install && grunt
-```
