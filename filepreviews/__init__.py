@@ -49,7 +49,7 @@ class FilePreviews(object):
         }
 
     def _generate_request_url(self, url):
-        params = urlencode({'url': url, 'size': '1'})
+        params = urlencode({'url': url})
         return '{}/?{}'.format(self.api_url, params)
 
     def _generate_url_hash(self, url):
