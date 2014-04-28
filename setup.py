@@ -14,18 +14,22 @@ url = 'https://github.com/GetBlimp/filepreviews-python'
 author = 'Jose Padilla'
 author_email = 'jpadilla@getblimp.com'
 license = 'MIT'
+keywords = 'file previews thumbnails metadata exif ocr'
 install_requires = open('requirements.txt').read().split('\n')
-test_suite = ''
 scripts = ['bin/filepreviews']
 classifiers = [
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python",
-    "Programming Language :: Python :: 2.6",
-    "Programming Language :: Python :: 2.7",
-    "Programming Language :: Python :: 3.2",
-    "Programming Language :: Python :: 3.3",
-    "Topic :: Utilities",
+    'Development Status :: 3 - Alpha',
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 2.6',
+    'Programming Language :: Python :: 2.7',
+    'Programming Language :: Python :: 3.2',
+    'Programming Language :: Python :: 3.3',
+    'Topic :: Utilities',
 ]
+
+with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
+    long_description = readme.read()
 
 
 def get_version(package):
@@ -80,12 +84,13 @@ setup(
     url=url,
     license=license,
     description=description,
+    long_description=long_description,
+    keywords=keywords,
     author=author,
     author_email=author_email,
     packages=get_packages(package),
     scripts=scripts,
     package_data=get_package_data(package),
-    test_suite=test_suite,
     install_requires=install_requires,
     classifiers=classifiers
 )
