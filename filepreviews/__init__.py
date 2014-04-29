@@ -19,7 +19,7 @@ __version__ = '1.0.0'
 VERSION = __version__
 
 API_URL = 'https://blimp-previews.herokuapp.com'
-RESULTS_URL = 'http://demo.filepreviews.io.s3-website-us-east-1.amazonaws.com'
+RESULTS_URL = 'https://s3.amazonaws.com/demo.filepreviews.io'
 
 logger = logging.getLogger('filepreviews')
 
