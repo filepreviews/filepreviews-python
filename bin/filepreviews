@@ -2,13 +2,17 @@
 """FilePreviews.io CLI
 
 Usage:
-  filepreviews <url> [--debug]
+  filepreviews <url> [--debug] [--metadata=<metadata>] [--width=<width>] [--height=<height>]
   filepreviews (-h | --help)
   filepreviews --version
 
 Options:
-  -h --help     Show this screen.
-  --version     Show version.
+  --metadata=ocr,psd   Possible values are 'ocr', 'psd', 'exif', and 'all'.
+  --width=100          Specifies maximum value of thumbnail width.
+  --height=200         Specifies maximum value of thumbnail height.
+  --debug              Turns on logging.
+  -h --help            Show this screen.
+  --version            Show version.
 
 """
 import json
@@ -22,6 +26,22 @@ if __name__ == '__main__':
     arguments = docopt(__doc__, version=version)
 
     previews = FilePreviews(debug=arguments['--debug'])
-    results = previews.generate(arguments['<url>'])
+    options = {}
+    metadata = arguments['--metadata']
+    width = arguments['--width']
+    height = arguments['--height']
+
+    if metadata:
+        options['metadata'] = metadata.split(',')
+
+    if width:
+        size = options.setdefault('size', {})
+        options['size']['width'] = width
+
+    if height:
+        size = options.setdefault('size', {})
+        options['size']['height'] = height
+
+    results = previews.generate(arguments['<url>'], **options)
 
     print(json.dumps(results))
