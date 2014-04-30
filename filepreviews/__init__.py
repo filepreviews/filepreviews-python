@@ -5,12 +5,11 @@ import logging
 
 try:
     # Python 3
-    from urllib.parse import urlencode, urlparse
+    from urllib.parse import urlencode
     from urllib.error import HTTPError
     from urllib.request import urlopen
 except ImportError:
     # Python 2
-    from urlparse import urlparse
     from urllib import urlencode, urlopen
     from urllib2 import HTTPError
 
