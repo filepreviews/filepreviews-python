@@ -17,7 +17,6 @@ __version__ = '1.0.3'
 VERSION = __version__
 
 API_URL = 'https://blimp-previews.herokuapp.com'
-RESULTS_URL = 'https://s3.amazonaws.com/demo.filepreviews.io'
 
 logger = logging.getLogger('filepreviews')
 
@@ -26,7 +25,6 @@ class FilePreviews(object):
     def __init__(self, *args, **kwargs):
         self.debug = kwargs.get('debug', False)
         self.api_url = kwargs.get('api_url', API_URL)
-        self.results_url = kwargs.get('results_url', RESULTS_URL)
 
         if self.debug:
             logging.basicConfig(level=logging.DEBUG)
@@ -40,13 +38,13 @@ class FilePreviews(object):
 
         try:
             response = urlopen(request_url)
-            preview_url = response.geturl()
+            data = self._get_json_response(response)
         except HTTPError as response:
-            preview_url = response.geturl()
+            data = self._get_json_response(response)
 
         return {
-            'metadata': self._poll_for_metadata(url, **kwargs),
-            'preview_url': preview_url
+            'metadata': self._poll_metadata(data['metadata_url'], **kwargs),
+            'preview_url': data['preview_url']
         }
 
     def _generate_request_url(self, url, **kwargs):
@@ -82,14 +80,16 @@ class FilePreviews(object):
         url_hash = self._generate_url_hash(url, **kwargs)
         return '{}/{}/metadata.json'.format(self.results_url, url_hash)
 
-    def _poll_for_metadata(self, url, **kwargs):
+    def _poll_metadata(self, url, **kwargs):
         metadata_url = self._generate_metadata_url(url, **kwargs)
 
         logger.debug('Polling {}'.format(metadata_url))
 
         try:
             response = urlopen(metadata_url)
-            data = response.read()
-            return json.loads(data.decode('utf-8'))
+            return self._get_json_response(response)
         except HTTPError:
-            return self._poll_for_metadata(url, **kwargs)
+            return self._poll_metadata(url, **kwargs)
+
+    def _get_json_response(self, response):
+        return json.loads(response.read().decode('utf-8'))
