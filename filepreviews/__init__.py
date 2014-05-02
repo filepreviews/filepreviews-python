@@ -1,5 +1,4 @@
 import json
-import hashlib
 import logging
 
 try:
@@ -72,24 +71,14 @@ class FilePreviews(object):
 
         return '{}/?{}'.format(self.api_url, urlencode(params))
 
-    def _generate_url_hash(self, url, **kwargs):
-        request_url = self._generate_request_url(url, **kwargs)
-        return hashlib.sha256(request_url.encode('utf-8')).hexdigest()
-
-    def _generate_metadata_url(self, url, **kwargs):
-        url_hash = self._generate_url_hash(url, **kwargs)
-        return '{}/{}/metadata.json'.format(self.results_url, url_hash)
-
-    def _poll_metadata(self, url, **kwargs):
-        metadata_url = self._generate_metadata_url(url, **kwargs)
-
+    def _poll_metadata(self, metadata_url, **kwargs):
         logger.debug('Polling {}'.format(metadata_url))
 
         try:
             response = urlopen(metadata_url)
             return self._get_json_response(response)
         except HTTPError:
-            return self._poll_metadata(url, **kwargs)
+            return self._poll_metadata(metadata_url, **kwargs)
 
     def _get_json_response(self, response):
         return json.loads(response.read().decode('utf-8'))
