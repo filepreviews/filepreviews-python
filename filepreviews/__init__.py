@@ -39,7 +39,7 @@ class FilePreviews(object):
             response = urlopen(request_url)
             data = self._get_json_response(response)
         except HTTPError as response:
-            data = self._get_json_response(response)
+            return self._get_json_response(response)
 
         return {
             'metadata': self._poll_metadata(data['metadata_url'], **kwargs),
