@@ -12,7 +12,7 @@ except ImportError:
     from urllib2 import HTTPError
 
 
-__version__ = '1.0.3'
+__version__ = '1.0.4'
 VERSION = __version__
 
 API_URL = 'https://blimp-previews.herokuapp.com'
