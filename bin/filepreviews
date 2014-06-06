@@ -2,7 +2,7 @@
 """FilePreviews.io CLI
 
 Usage:
-  filepreviews <url> [--debug] [--metadata=<metadata>] [--width=<width>] [--height=<height>]
+  filepreviews <url> [--debug] [--metadata=<metadata>] [--width=<width>] [--height=<height>] [--format=<format>]
   filepreviews (-h | --help)
   filepreviews --version
 
@@ -10,6 +10,7 @@ Options:
   --metadata=ocr,psd   Possible values are 'ocr', 'psd', 'exif', and 'all'.
   --width=100          Specifies maximum value of thumbnail width.
   --height=200         Specifies maximum value of thumbnail height.
+  --format=png         Possible values are 'png', 'jpg', and 'jpeg'.
   --debug              Turns on logging.
   -h --help            Show this screen.
   --version            Show version.
@@ -26,10 +27,12 @@ if __name__ == '__main__':
     arguments = docopt(__doc__, version=version)
 
     previews = FilePreviews(debug=arguments['--debug'])
+
     options = {}
     metadata = arguments['--metadata']
     width = arguments['--width']
     height = arguments['--height']
+    output_format = arguments['--format']
 
     if metadata:
         options['metadata'] = metadata.split(',')
@@ -41,6 +44,9 @@ if __name__ == '__main__':
     if height:
         size = options.setdefault('size', {})
         options['size']['height'] = height
+
+    if output_format:
+        options['format'] = output_format
 
     results = previews.generate(arguments['<url>'], **options)
 

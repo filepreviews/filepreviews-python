@@ -12,7 +12,7 @@ except ImportError:
     from urllib2 import HTTPError
 
 
-__version__ = '1.0.4'
+__version__ = '1.0.5'
 VERSION = __version__
 
 API_URL = 'https://blimp-previews.herokuapp.com'
@@ -47,8 +47,8 @@ class FilePreviews(object):
         }
 
     def _generate_request_url(self, url, **kwargs):
-        metadata = set(kwargs.get('metadata', []))
-        size = kwargs.get('size')
+        metadata = set(kwargs.pop('metadata', []))
+        size = kwargs.pop('size', None)
         params = {
             'url': url
         }
@@ -68,6 +68,8 @@ class FilePreviews(object):
                 geometry = '{}x{}'.format(geometry, height)
 
             params['size'] = geometry
+
+        params.update(kwargs)
 
         return '{}/?{}'.format(self.api_url, urlencode(params))
 
