@@ -2,7 +2,7 @@
 """FilePreviews.io CLI
 
 Usage:
-  filepreviews <url> [--debug] [--metadata=<metadata>] [--width=<width>] [--height=<height>] [--format=<format>]
+  filepreviews <url> [--debug] [--metadata=<metadata>] [--width=<width>] [--height=<height>] [--format=<format>] [--api_key=<api_key>]
   filepreviews (-h | --help)
   filepreviews --version
 
@@ -11,6 +11,7 @@ Options:
   --width=100          Specifies maximum value of thumbnail width.
   --height=200         Specifies maximum value of thumbnail height.
   --format=png         Possible values are 'png', 'jpg', and 'jpeg'.
+  --api_key=APIKEY     API Key from FilePreviews.io.
   --debug              Turns on logging.
   -h --help            Show this screen.
   --version            Show version.
@@ -26,7 +27,10 @@ if __name__ == '__main__':
     version = 'FilePreviews.io CLI {}'.format(VERSION)
     arguments = docopt(__doc__, version=version)
 
-    previews = FilePreviews(debug=arguments['--debug'])
+    previews = FilePreviews(
+        debug=arguments['--debug'],
+        api_key=arguments['--api_key']
+    )
 
     options = {}
     metadata = arguments['--metadata']

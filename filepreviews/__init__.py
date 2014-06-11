@@ -5,17 +5,17 @@ try:
     # Python 3
     from urllib.parse import urlencode
     from urllib.error import HTTPError
-    from urllib.request import urlopen
+    from urllib.request import urlopen, Request
 except ImportError:
     # Python 2
-    from urllib import urlencode, urlopen
+    from urllib import urlencode, urlopen, Request
     from urllib2 import HTTPError
 
 
 __version__ = '1.0.5'
 VERSION = __version__
 
-API_URL = 'https://blimp-previews.herokuapp.com'
+API_URL = 'https://api.filepreviews.io/v1'
 
 logger = logging.getLogger('filepreviews')
 
@@ -24,6 +24,7 @@ class FilePreviews(object):
     def __init__(self, *args, **kwargs):
         self.debug = kwargs.get('debug', False)
         self.api_url = kwargs.get('api_url', API_URL)
+        self.api_key = kwargs.get('api_key')
 
         if self.debug:
             logging.basicConfig(level=logging.DEBUG)
@@ -36,7 +37,12 @@ class FilePreviews(object):
         request_url = self._generate_request_url(url, **kwargs)
 
         try:
-            response = urlopen(request_url)
+            request = Request(request_url)
+
+            if self.api_key:
+                request.add_header('X-API-Key', self.api_key)
+
+            response = urlopen(request)
             data = self._get_json_response(response)
         except HTTPError as response:
             return self._get_json_response(response)
