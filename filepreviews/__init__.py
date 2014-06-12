@@ -12,7 +12,7 @@ except ImportError:
     from urllib2 import HTTPError
 
 
-__version__ = '1.0.5'
+__version__ = '1.0.6'
 VERSION = __version__
 
 API_URL = 'https://api.filepreviews.io/v1'
