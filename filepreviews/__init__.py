@@ -8,11 +8,11 @@ try:
     from urllib.request import urlopen, Request
 except ImportError:
     # Python 2
-    from urllib import urlencode, urlopen, Request
-    from urllib2 import HTTPError
+    from urllib import urlencode
+    from urllib2 import Request, urlopen, HTTPError
 
 
-__version__ = '1.0.6'
+__version__ = '1.0.7'
 VERSION = __version__
 
 API_URL = 'https://api.filepreviews.io/v1'
