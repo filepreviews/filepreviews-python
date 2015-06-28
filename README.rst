@@ -23,10 +23,7 @@ Usage
 
 .. code:: python
 
-    >>> fp = FilePreviews(
-    ...     api_key='API_KEY_HERE',
-    ...     api_secret='API_SECRET_HERE'
-    ... )
+    >>> fp = FilePreviews(api_key='API_KEY_HERE', api_secret='API_SECRET_HERE')
     >>> fp.generate('http://www.getblimp.com/images/screenshot1.png')
     <PreviewResult at 4497022216> JSON: {
       "id": "220214ec-17ec-4f37-a790-eaea64522bf2",
