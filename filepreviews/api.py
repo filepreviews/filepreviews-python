@@ -22,7 +22,7 @@ class FilePreviews(object):
         self.logger.info('Initializing FilePreviews')
 
     def generate(self, url, **kwargs):
-        self.logger.info('Generating preview for {}'.format(url))
+        self.logger.info('Generating preview for {0}'.format(url))
 
         metadata = set(kwargs.pop('metadata', []))
         size = kwargs.pop('size', None)
@@ -51,7 +51,7 @@ class FilePreviews(object):
         return PreviewResult(response)
 
     def retrieve(self, preview_id):
-        self.logger.info('Retrieving status for preview {}'.format(preview_id))
+        self.logger.info('Retrieving preview {0}'.format(preview_id))
 
         response = self.client.get('previews', preview_id)
 
