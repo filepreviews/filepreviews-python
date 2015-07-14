@@ -1,6 +1,9 @@
 FilePreviews.io
 ===============
 
+|Build Status|
+|PyPI Status|
+
 Python client library and CLI tool for the `FilePreviews.io`_ service. Generate image previews and metadata from almost any kind of file.
 
 Installation
@@ -71,3 +74,7 @@ CLI
     }
 
 .. _FilePreviews.io: http://filepreviews.io
+.. |Build Status| image:: https://travis-ci.org/GetBlimp/filepreviews-python.svg?branch=master
+   :target: https://travis-ci.org/GetBlimp/filepreviews-python
+.. |PyPI Status| image:: https://img.shields.io/pypi/v/filepreviews.svg
+   :target: https://pypi.python.org/pypi/filepreviews
