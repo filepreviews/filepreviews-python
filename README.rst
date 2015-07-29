@@ -26,6 +26,7 @@ Usage
 
 .. code:: python
 
+    >>> from filepreviews import FilePreviews
     >>> fp = FilePreviews(api_key='API_KEY_HERE', api_secret='API_SECRET_HERE')
     >>> fp.generate('http://www.getblimp.com/images/screenshot1.png')
     <PreviewResult at 4497022216> JSON: {
