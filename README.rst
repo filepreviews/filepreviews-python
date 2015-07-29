@@ -39,6 +39,24 @@ Usage
       "user_data": null
     }
 
+Options
+~~~~~~~
+
+Check out the `endpoint docs`_ for all available options.
+
+.. code:: python
+
+    >>> options = {
+    ...   'sizes': ['200x200'],
+    ...   'format': 'png',
+    ...   'metadata': ['exif'],
+    ...   'pages': '1',
+    ...   'data': {
+    ...     'content_id': '1234'
+    ...   }
+    ... }
+    >>> fp.generate('http://www.getblimp.com/images/screenshot1.png', **options)
+
 CLI
 ~~~
 
@@ -75,6 +93,7 @@ CLI
     }
 
 .. _FilePreviews.io: http://filepreviews.io
+.. _endpoint docs: http://filepreviews.io/docs/endpoints.html
 .. |Build Status| image:: https://travis-ci.org/GetBlimp/filepreviews-python.svg?branch=master
    :target: https://travis-ci.org/GetBlimp/filepreviews-python
 .. |PyPI Status| image:: https://img.shields.io/pypi/v/filepreviews.svg
