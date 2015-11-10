@@ -46,7 +46,7 @@ setup(
     version=version,
     url='https://github.com/GetBlimp/filepreviews-python',
     license='MIT',
-    description='Python client library and CLI tool for the Demo API of FilePreviews.io',
+    description='Python client library and CLI tool for FilePreviews.io',
     long_description=long_description,
     keywords='file previews thumbnails metadata exif ocr',
     author='José Padilla',
