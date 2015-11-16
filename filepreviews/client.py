@@ -1,11 +1,31 @@
-from filepreviews import exceptions
+import json
+import platform
+
+from filepreviews import VERSION, exceptions
 from filepreviews.session import Session
 
 
 class Client(object):
     def __init__(self, api_key, api_secret, base_url):
-        self.session = Session(api_key, api_secret)
         self.base_url = base_url
+
+        self.session = Session(api_key, api_secret)
+
+        client_ua = {
+            'lang': 'python',
+            'publisher': 'stripe',
+            'bindings_version': VERSION,
+            'lang_version': platform.python_version(),
+            'platform': platform.platform(),
+            'uname': ' '.join(platform.uname())
+        }
+
+        self.session.headers.update({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-FilePreviews-Client-User-Agent': json.dumps(client_ua),
+            'User-Agent': 'FilePreviews/v2 PythonBindings/{0}'.format(VERSION),
+        })
 
     def build_url(self, *args):
         return '{base_url}/{path}/'.format(
