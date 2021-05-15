@@ -24,11 +24,11 @@ Using easy\_install:
 Usage
 -----
 
-.. code:: python
+.. code-block:: pycon
 
     >>> from filepreviews import FilePreviews
-    >>> fp = FilePreviews(api_key='API_KEY_HERE', api_secret='API_SECRET_HERE')
-    >>> fp.generate('http://www.getblimp.com/images/screenshot1.png')
+    >>> fp = FilePreviews(api_key="API_KEY_HERE", api_secret="API_SECRET_HERE")
+    >>> fp.generate("https://filesamples.com/samples/image/heic/sample1.heic")
     <PreviewResult at 4497022216> JSON: {
       "id": "220214ec-17ec-4f37-a790-eaea64522bf2",
       "original_file": null,
@@ -44,18 +44,16 @@ Options
 
 Check out the `endpoint docs`_ for all available options.
 
-.. code:: python
+.. code-block:: pycon
 
     >>> options = {
-    ...   'sizes': ['200x200'],
-    ...   'format': 'png',
-    ...   'metadata': ['exif'],
-    ...   'pages': '1',
-    ...   'data': {
-    ...     'content_id': '1234'
-    ...   }
+    ...     "sizes": ["200x200"],
+    ...     "format": "png",
+    ...     "metadata": ["exif"],
+    ...     "pages": "1",
+    ...     "data": {"content_id": "1234"},
     ... }
-    >>> fp.generate('http://www.getblimp.com/images/screenshot1.png', **options)
+    >>> fp.generate("https://filesamples.com/samples/image/heic/sample1.heic", **options)
 
 CLI
 ~~~
@@ -65,7 +63,7 @@ CLI
     $ filepreviews \
         --api_key=API_KEY_HERE \
         --api_secret=API_SECRET_HERE \
-        generate http://www.getblimp.com/images/screenshot1.png
+        generate https://filesamples.com/samples/image/heic/sample1.heic
     {
       "id": "e48c645d-8c02-40ab-9f11-2b3f2316be15",
       "original_file": null,

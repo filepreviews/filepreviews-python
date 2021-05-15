@@ -1,3 +1,7 @@
-include README.rst
+include .pre-commit-config.yaml
 include LICENSE
-include requirements.txt
+include README.rst
+include tox.ini
+graft tests
+recursive-exclude * *.py[co]
+recursive-exclude * __pycache__
