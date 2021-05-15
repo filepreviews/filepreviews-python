@@ -5,7 +5,7 @@ A Python library for FilePreview's API.
 """
 
 __title__ = "filepreviews"
-__version__ = "3.0.0"
+__version__ = "3.0.0rc1"
 __author__ = "José Padilla"
 __license__ = "MIT"
 __copyright__ = "Copyright 2015 Blimp LLC"
