@@ -92,7 +92,7 @@ CLI
 
 .. _FilePreviews.io: http://filepreviews.io
 .. _endpoint docs: http://filepreviews.io/docs/endpoints.html
-.. |Build Status| image:: https://travis-ci.org/GetBlimp/filepreviews-python.svg?branch=master
-   :target: https://travis-ci.org/GetBlimp/filepreviews-python
+.. |Build Status| image:: https://github.com/filepreviews/filepreviews-python/actions/workflows/main.yml/badge.svg
+   :target: https://github.com/filepreviews/filepreviews-python/actions/workflows/main.yml
 .. |PyPI Status| image:: https://img.shields.io/pypi/v/filepreviews.svg
    :target: https://pypi.python.org/pypi/filepreviews
