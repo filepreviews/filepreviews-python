@@ -7,9 +7,8 @@ class PreviewResult(dict):
         self.__dict__ = response
 
     def __repr__(self):
-        return '<PreviewResult at {id}> JSON: {json}'.format(
-            id=id(self),
-            json=str(self)
+        return "<PreviewResult at {id}> JSON: {json}".format(
+            id=id(self), json=str(self)
         )
 
     def __str__(self):
@@ -17,4 +16,4 @@ class PreviewResult(dict):
 
     @property
     def preview_url(self):
-        return self.preview.get('url')
+        return self.preview.get("url")
